@@ -1,0 +1,27 @@
+>> dotnet new sln // Create Solution File
+
+>> dotnet new webapi -o API // Create project in directory API
+
+>> dotnet sln add API // adding API project to Solution File
+
+// Install C# extension by Microsoft (powered by OmniSharp)
+// Install C# extension by JosKreativ
+// In VSCode Preference exclude **/obj & **/bin showing in VSCode Explorer Panel
+
+// File Properties/lauchSettings.json change port
+  from - "applicationUrl": "https://localhost:7133;http://localhost:5233",
+  to - "applicationUrl": "https://localhost:5001;http://localhost:5000",
+
+>> dotnet dev-certs https --trust // Install valid https certificate
+
+
+// appsettings.Development.json file change 
+  from - "Microsoft.AspNetCore": "Warning"
+  to - "Microsoft.AspNetCore": "Information"
+
+// file in Properties/launchSettings set profile.API.lauchBrowser to false because this is an REST API project
+
+
+// Migrations
+>> dotnet ef migrations add InitialCreate -o Data/Migrations // Create Migration
+>> dotnet ef database update // Updaing to database
