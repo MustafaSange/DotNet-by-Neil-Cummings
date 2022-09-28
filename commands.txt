@@ -25,3 +25,20 @@
 // Migrations
 >> dotnet ef migrations add InitialCreate -o Data/Migrations // Create Migration
 >> dotnet ef database update // Updaing to database
+
+
+// Angular https
+1. StudentAssets\generateTrustedSSL
+2. Follow instructions.txt
+3. Angular client folder, create ssl folder and copy paste below files
+  server.crt,
+  server.key
+
+  Add below configuration to angular.json
+  "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "sslKey": "./ssl/server.key",
+            "sslCert": "./ssl/server.crt",
+            "ssl": true
+          },

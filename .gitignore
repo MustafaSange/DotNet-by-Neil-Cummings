@@ -455,5 +455,6 @@ $RECYCLE.BIN/
 
 
 DatingApp-master.zip
-StudentAssets
-appsettings.json
+
+API/bin
+API/obj
