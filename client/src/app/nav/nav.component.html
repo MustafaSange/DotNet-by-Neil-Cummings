@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+  <div class="container">
+    <span class="brand-name">Dating App</span>
+    <ng-container *ngIf="user$ | async">
+      <a mat-button href="#">Matches</a>
+      <a mat-button href="#">Lists</a>
+      <a mat-button href="#">Messages</a>
+    </ng-container>
+
+    <span class="spacer"></span>
+
+    <ng-container *ngIf="user$ | async as user">
+      <button type="button" mat-button [matMenuTriggerFor]="menu">
+        Welcome {{ user.userName | titlecase }} <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button type="button" mat-menu-item>Edit Profile</button>
+        <mat-divider></mat-divider>
+        <button type="button" mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </ng-container>
+
+    <form #form="ngForm" (ngSubmit)="login(form)" autocomplete="off" *ngIf="!(user$ | async)">
+      <input type="text" placeholder="User Name" name="userName" ngModel required>
+      <input type="password" placeholder="Password" name="password" ngModel required>
+      <button type="submit" mat-button [disabled]="form.invalid">Login</button>
+    </form>
+  </div>
+</mat-toolbar>

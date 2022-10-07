@@ -1,0 +1,18 @@
+<form #form="ngForm" fxLayout="column" fxLayoutGap="8px" (ngSubmit)="register()" autocomplete="off">
+  <h2>Sign up</h2>
+
+  <mat-form-field>
+    <mat-label>User Name</mat-label>
+    <input type="text" matInput placeholder="User Name" name="userName" required [(ngModel)]="model.userName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input type="password" matInput placeholder="Password" name="password" required [(ngModel)]="model.password">
+  </mat-form-field>
+
+  <div class="text-left">
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Sign up</button>
+    <button type="button" class="btn-cancel" mat-raised-button (click)="cancel()">Cancel</button>
+  </div>
+</form>
