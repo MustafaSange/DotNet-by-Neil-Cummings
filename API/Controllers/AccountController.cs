@@ -30,7 +30,7 @@ namespace API.Controllers
     [HttpPost("register")]
     public async Task<ActionResult<UserDTO>> Register(RegisterDTO registerDTO)
     {
-        if (await UserExists(registerDTO.UserName)) return BadRequest("Username is taken.");
+        if (await UserExists(registerDTO.UserName)) return BadRequest("User Name is taken.");
 
         using var hmac = new HMACSHA512();
         var user = new AppUser
@@ -54,7 +54,7 @@ namespace API.Controllers
     {
       var user = await _context.Users
         .SingleOrDefaultAsync(user => user.UserName == loginDTO.UserName.ToLower());
-      var message = "Invalid UserName and Password.";
+      var message = "Invalid User Name and Password.";
       if (user == null) return BadRequest(message);
 
       using var hamc = new HMACSHA512(user.PasswordSalt);

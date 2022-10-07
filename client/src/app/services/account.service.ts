@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { User } from '../models/user.model';
 import { ReplaySubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class AccountService {
   get user$() { return  this.user.asObservable(); }
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   login(model: any) {
@@ -28,6 +30,7 @@ export class AccountService {
   logout() {
     localStorage.removeItem('user');
     this.user.next(null);
+    this.router.navigateByUrl('/');
   }
 
   register(user: User) {

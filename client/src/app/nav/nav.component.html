@@ -1,10 +1,11 @@
 <mat-toolbar color="primary">
   <div class="container">
-    <span class="brand-name">Dating App</span>
+    <a class="brand-name" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Dating App</a>
+
     <ng-container *ngIf="user$ | async">
-      <a mat-button href="#">Matches</a>
-      <a mat-button href="#">Lists</a>
-      <a mat-button href="#">Messages</a>
+      <a mat-button routerLink="/members" routerLinkActive="active">Matches</a>
+      <a mat-button routerLink="/lists" routerLinkActive="active">Lists</a>
+      <a mat-button routerLink="/messages" routerLinkActive="active">Messages</a>
     </ng-container>
 
     <span class="spacer"></span>
@@ -24,7 +25,7 @@
     <form #form="ngForm" (ngSubmit)="login(form)" autocomplete="off" *ngIf="!(user$ | async)">
       <input type="text" placeholder="User Name" name="userName" ngModel required>
       <input type="password" placeholder="Password" name="password" ngModel required>
-      <button type="submit" mat-button [disabled]="form.invalid">Login</button>
+      <button type="submit" mat-stroked-button [disabled]="form.invalid">Login</button>
     </form>
   </div>
 </mat-toolbar>

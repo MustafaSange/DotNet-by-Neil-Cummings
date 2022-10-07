@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { AccountService } from '../services/account.service';
+import { SnackBarService } from '../services/snack-bar.service';
 
 @Component({
   selector: 'app-nav',
@@ -14,7 +16,9 @@ export class NavComponent implements OnInit {
   protected user$!: Observable<User | null>;
 
   constructor(
-    private accountService: AccountService
+    private router: Router,
+    private accountService: AccountService,
+    private snackBarService: SnackBarService
   ) { }
 
   ngOnInit(): void {
@@ -24,8 +28,8 @@ export class NavComponent implements OnInit {
   protected login(form: NgForm): void {
     this.accountService.login(form.value)
       .subscribe({
-        next: response => console.log(response),
-        error: error => console.log(error.error)
+        next: _ => this.router.navigateByUrl('/members'),
+        error: error => this.snackBarService.error(error.error)
       });
   }
 

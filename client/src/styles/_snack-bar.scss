@@ -1,0 +1,30 @@
+@mixin type(
+  $type,
+  $background-color: var(--color-dark-gray),
+  $font-color: var(--color-white),
+  $action-background-color: var(--color-dark-gray),
+  $action-font-color: var(--color-white)
+) {
+  snack-bar-container.snack-bar-#{$type} {
+    background-color: $background-color;
+    color: $font-color;
+
+    button {
+      background-color: $action-background-color;
+      color: $action-font-color
+    }
+  }
+}
+
+@mixin error() {
+  @include type(
+    $type: error,
+    $background-color: var(--color-warn)
+  );
+}
+
+@mixin info() {
+  @include type(
+    $type: info
+  );
+}
