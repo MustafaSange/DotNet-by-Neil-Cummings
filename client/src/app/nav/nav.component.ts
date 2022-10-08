@@ -27,10 +27,7 @@ export class NavComponent implements OnInit {
 
   protected login(form: NgForm): void {
     this.accountService.login(form.value)
-      .subscribe({
-        next: _ => this.router.navigateByUrl('/members'),
-        error: error => this.snackBarService.error(error.error)
-      });
+      .subscribe( _ => this.router.navigateByUrl('/members'));
   }
 
   protected logout(): void {
