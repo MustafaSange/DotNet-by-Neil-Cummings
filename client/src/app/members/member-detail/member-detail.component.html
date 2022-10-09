@@ -1,1 +1,62 @@
-<p>member-detail works!</p>
+<div class="container-with-margin" fxLayout fxLayoutGap="24px">
+  <ng-container *ngIf="member$ | async as member">
+    <mat-card>
+      <img mat-card-image [src]="member.photoUrl || './assets/user.png'" alt="{{ member.knownAs }}">
+
+      <mat-card-header>
+        <mat-card-title>{{ member.knownAs }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content class="mt-16">
+        <strong>Location</strong>
+        <p>{{ member.city }}, {{ member.country }}</p>
+
+        <strong>Age</strong>
+        <p>{{ member.age }}</p>
+
+        <strong>Last Active</strong>
+        <p>{{ member.lastActive }}</p>
+
+        <strong>Member Since</strong>
+        <p>{{ member.created }}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button type="button" mat-raised-button color="primary">Like</button>
+        <button type="button" mat-raised-button color="primary">Message</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-tab-group>
+      <mat-tab label="About {{ member.knownAs }}">
+        <div class="mt-16">
+          <h4>Description</h4>
+          <p>{{ member.introduction }}</p>
+          <h4>Looking for</h4>
+          <p>{{ member.lookingFor }}</p>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Interests">
+        <div class="mt-16">
+          <h4>Interests</h4>
+          <p>{{ member.interests }}</p>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Photos">
+        <div class="mt-16">
+          <img
+            [src]="photo.url"
+            alt="{{ member.knownAs }}"
+            *ngFor="let photo of member.photos"
+          >
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Messages">
+        <p>Message will go here</p>
+      </mat-tab>
+    </mat-tab-group>
+  </ng-container>
+</div>

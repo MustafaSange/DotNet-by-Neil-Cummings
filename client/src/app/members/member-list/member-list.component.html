@@ -1,1 +1,8 @@
-<p>member-list works!</p>
+<div class="container-with-margin">
+  <app-member-card
+    *ngFor="let member of members$ | async"
+    [member]="member"
+  >
+    {{ member.knownAs | titlecase }}
+  </app-member-card>
+</div>

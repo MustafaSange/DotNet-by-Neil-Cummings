@@ -1,0 +1,15 @@
+<mat-card>
+  <img mat-card-image [src]="member.photoUrl || './assets/user.png'" alt="{{ member.knownAs }}">
+  <mat-card-header>
+    <mat-card-title>{{ member.knownAs }}</mat-card-title>
+    <mat-card-subtitle>{{ member.city }}</mat-card-subtitle>
+  </mat-card-header>
+  <!-- <mat-card-content>
+    <p>{{ member.introduction }}</p>
+  </mat-card-content> -->
+  <mat-card-actions>
+    <a type="button" mat-icon-button color="primary" [routerLink]="['/', 'members', member.userName]"><mat-icon>person</mat-icon></a>
+    <button type="button" mat-icon-button color="primary"><mat-icon>favorite</mat-icon></button>
+    <button type="button" mat-icon-button color="primary"><mat-icon>message</mat-icon></button>
+  </mat-card-actions>
+</mat-card>

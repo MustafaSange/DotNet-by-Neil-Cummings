@@ -1,0 +1,9 @@
+mat-card-header,
+:host::ng-deep .mat-card-header-text {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+mat-card-subtitle {
+  margin-bottom: 0;
+}

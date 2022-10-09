@@ -1,0 +1,20 @@
+:host {
+  --card-width: 200px;
+}
+
+mat-card {
+  width: var(--card-width);
+}
+
+:host::ng-deep mat-card .mat-card-header-text {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.mat-card-content strong {
+  color: var(--color-dark-gray-dim);
+}
+
+mat-tab-group {
+  width: calc(100% - 24px - var(--card-width));
+}

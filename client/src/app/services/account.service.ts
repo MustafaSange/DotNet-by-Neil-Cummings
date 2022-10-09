@@ -4,12 +4,13 @@ import { tap } from 'rxjs/operators';
 import { User } from '../models/user.model';
 import { ReplaySubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  private readonly baseURL = 'https://localhost:5001/api';
+  private readonly baseURL = environment.apiURL;
   private user = new ReplaySubject<User | null>(1);
   get user$() { return  this.user.asObservable(); }
 
