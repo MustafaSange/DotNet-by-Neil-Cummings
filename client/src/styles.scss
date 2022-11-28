@@ -3,6 +3,7 @@
 @use './styles/snack-bar';
 
 :root {
+  --color-primary: #3f51b5;
   --color-warn: #f44336;
   --color-white: white;
   --color-white-dim: rgba(255, 255, 255, 0.7);
@@ -40,3 +41,4 @@ a { text-decoration: none; }
 
 @include snack-bar.error;
 @include snack-bar.info;
+@include snack-bar.can-deactivate;

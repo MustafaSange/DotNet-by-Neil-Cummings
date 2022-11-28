@@ -25,6 +25,14 @@
 
 @mixin info() {
   @include type(
-    $type: info
+    $type: info,
+    $action-background-color: var(--color-primary),
+  );
+}
+
+@mixin can-deactivate() {
+  @include type(
+    $type: can-deactivate,
+    $background-color: var(--color-warn)
   );
 }

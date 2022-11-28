@@ -38,12 +38,12 @@ namespace API.Data
     //   return await _context.Users.FindAsync(id);
     // }
 
-    // public async Task<AppUser> GetUserByUserNameAsync(string userName)
-    // {
-    //   return await _context.Users
-    //     .Include(user => user.Photos)
-    //     .SingleOrDefaultAsync(user => user.UserName == userName.ToLower());
-    // }
+    public async Task<AppUser> GetUserByUserNameAsync(string userName)
+    {
+      return await _context.Users
+        .Include(user => user.Photos)
+        .SingleOrDefaultAsync(user => user.UserName == userName.ToLower());
+    }
 
     public async Task<bool> SaveAllAsync()
     {

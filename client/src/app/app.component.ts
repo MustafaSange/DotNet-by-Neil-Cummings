@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { delay, Observable } from 'rxjs';
 import { User } from './models/user.model';
 import { AccountService } from './services/account.service';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +12,16 @@ import { AccountService } from './services/account.service';
 export class AppComponent implements OnInit {
   title = 'The Dating App';
 
+  isLoading$!: Observable<number>;
+
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private loadingService: LoadingService
   ) { }
 
 
   ngOnInit() {
+    this.setIsLoading();
     this.setUser();
   }
 
@@ -27,5 +32,12 @@ export class AppComponent implements OnInit {
       user = JSON.parse(userString);
     }
     this.accountService.setUser(user);
+  }
+
+  private setIsLoading() {
+    this.isLoading$ = this.loadingService.isLoading$
+      .pipe(
+        delay(0)
+      );
   }
 }

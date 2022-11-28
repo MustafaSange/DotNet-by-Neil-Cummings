@@ -1,3 +1,4 @@
+
 :host {
   --card-width: 200px;
 }
@@ -17,9 +18,4 @@ mat-card {
 
 mat-tab-group {
   width: calc(100% - 24px - var(--card-width));
-
-  h4 {
-    font-weight: bold;
-  }
 }
-

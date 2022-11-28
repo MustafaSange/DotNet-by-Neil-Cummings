@@ -1,0 +1,59 @@
+<div class="container-with-margin">
+  <h1>Your Profile</h1>
+  <section fxLayout fxLayoutGap="16px" *ngIf="member">
+    <mat-card>
+      <img mat-card-image [src]="member.photoUrl || './assets/user.png'" alt="{{ member.knownAs }}">
+
+      <mat-card-header>
+        <mat-card-title>{{ member.knownAs }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content class="mt-16">
+        <strong>Location</strong>
+        <p>{{ member.city }}, {{ member.country }}</p>
+
+        <strong>Age</strong>
+        <p>{{ member.age }}</p>
+
+        <strong>Last Active</strong>
+        <p>{{ member.lastActive }}</p>
+
+        <strong>Member Since</strong>
+        <p>{{ member.created }}</p>
+      </mat-card-content>
+
+      <mat-card-actions fxLayout="column">
+        <button type="submit" form="editForm" mat-raised-button color="primary" [disabled]="!form.dirty">Update</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-tab-group>
+      <mat-tab label="About {{ member.userName | titlecase }}">
+        <form id="editForm" class="mt-16" #form="ngForm" (ngSubmit)="update()" fxLayout="column" fxLayoutGap="16px">
+          <mat-form-field>
+            <textarea matInput rows="4" matAutosizeMaxRows="6" placeholder="Description" name="introduction" [(ngModel)]="member.introduction"></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput rows="4" matAutosizeMaxRows="6" placeholder="Looking For" name="lookingFor" [(ngModel)]="member.lookingFor"></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput rows="4" matAutosizeMaxRows="6" placeholder="Interests" name="interests" [(ngModel)]="member.interests"></textarea>
+          </mat-form-field>
+
+          <section fxLayout fxLayoutGap="16px">
+            <mat-form-field>
+              <input type="text" matInput placeholder="City" name="city" [(ngModel)]="member.city">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input type="text" matInput placeholder="Country" name="country" [(ngModel)]="member.country">
+            </mat-form-field>
+          </section>
+        </form>
+      </mat-tab>
+      <mat-tab label="Edit Photos"> Content 2 </mat-tab>
+    </mat-tab-group>
+  </section>
+</div>

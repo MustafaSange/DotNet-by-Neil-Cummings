@@ -14,23 +14,34 @@ export class SnackBarService {
     private snackBar: MatSnackBar
   ) { }
 
-  error(message: string, config?: MatSnackBarConfig): MatSnackBarRef<TextOnlySnackBar> {
+  error(message: string, action = 'Dismiss', config?: MatSnackBarConfig): MatSnackBarRef<TextOnlySnackBar> {
     config = {
       ...this.config,
       ...config,
-      panelClass: 'snack-bar-error'
+      panelClass: 'snack-bar-error',
     };
 
-    return this.snackBar.open(message, 'Dismiss', config);
+    return this.snackBar.open(message, action, config);
   }
 
-  info(message: string, config?: MatSnackBarConfig): MatSnackBarRef<TextOnlySnackBar> {
+  info(message: string, action = 'Dismiss', config?: MatSnackBarConfig): MatSnackBarRef<TextOnlySnackBar> {
     config = {
       ...this.config,
       ...config,
       panelClass: 'snack-bar-info'
     };
 
-    return this.snackBar.open(message, 'Dismiss', config);
+    return this.snackBar.open(message, action, config);
+  }
+
+  canDeactivate(message: string, action = 'Continue', config?: MatSnackBarConfig): MatSnackBarRef<TextOnlySnackBar> {
+    config = {
+      ...this.config,
+      ...config,
+      duration: 4000,
+      panelClass: 'snack-bar-can-deactivate'
+    };
+
+    return this.snackBar.open(message, action, config);
   }
 }

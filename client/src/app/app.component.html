@@ -3,3 +3,10 @@
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+
+<div class="spinner" *ngIf="isLoading$ | async">
+  <div class="inner">
+    <mat-progress-spinner mode="indeterminate" color="accent" diameter="50"></mat-progress-spinner>
+    <h3>Loading...</h3>
+  </div>
+</div>

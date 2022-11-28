@@ -17,7 +17,7 @@
       </button>
 
       <mat-menu #menu="matMenu" xPosition="before">
-        <button type="button" mat-menu-item>Edit Profile</button>
+        <a mat-menu-item [routerLink]="['/', 'members', user.userName, 'edit']">Edit Profile</a>
         <mat-divider></mat-divider>
         <button type="button" mat-menu-item (click)="logout()">Logout</button>
       </mat-menu>
